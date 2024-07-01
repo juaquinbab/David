@@ -31,10 +31,10 @@ const client = new Client({
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   },
   authStrategy: new LocalAuth({ clientId: "Client-one" }),
-  webVersionCache: {
-    type: 'remote',
-    remotePath: 'https://raw.githubusercontent.com/guigo613/alternative-wa-version/main/html/2.2413.51-beta-alt.html' // Tried 2.2412.54 still same result
-  }
+  // webVersionCache: {
+  //   type: 'remote',
+  //   remotePath: 'https://raw.githubusercontent.com/guigo613/alternative-wa-version/main/html/2.2413.51-beta-alt.html' // Tried 2.2412.54 still same result
+  // }
 });
 
 

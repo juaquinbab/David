@@ -1,3 +1,2 @@
-2024/06/22-09:42:54.759 8603 Reusing MANIFEST /Users/leidyburgos/Documents/David/.wwebjs_auth/session-Client-one/Default/Service Worker/Database/MANIFEST-000001
-2024/06/22-09:42:54.759 8603 Recovering log #3
-2024/06/22-09:42:54.760 8603 Reusing old log /Users/leidyburgos/Documents/David/.wwebjs_auth/session-Client-one/Default/Service Worker/Database/000003.log 
+2024/07/01-08:02:35.531 8703 Creating DB /Users/leidyburgos/Documents/David/.wwebjs_auth/session-Client-one/Default/Service Worker/Database since it was missing.
+2024/07/01-08:02:35.542 8703 Reusing MANIFEST /Users/leidyburgos/Documents/David/.wwebjs_auth/session-Client-one/Default/Service Worker/Database/MANIFEST-000001
