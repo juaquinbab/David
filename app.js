@@ -209,7 +209,7 @@ if (MSGbien !== null) { // Check if MSGbien exists
       
 
     if (message.body.toLowerCase().includes("comprar") || message.body.toLowerCase().includes("1") ) {
-      client.sendMessage(message.from, '🎥 *Escoje el número de tu preferencia*\n\n1️⃣ Netflix±Disney±Amazon prime video 22,000 por 30 días\n\n2️⃣ Netflix más Disney más hbo por 23,000 \n\n3️⃣ Netflix más hbo + Amazon 22,000 por 30 días \n\n4️⃣ Netflix original sin caídas y renovables a 17 mil \n\n5️⃣ Disney+ 5 mil \n\n6️⃣ Amazon 6 mil \n\n7️⃣ HBO Max 5 mil \n\n8️⃣ Star+ 7 mil \n\n9️⃣ PARAMOUNT+ 5 MIL \n\n🔟 VIX 9 MIL \n\n1️⃣1️⃣ Spotify 2 meses 14 mil \n\n1️⃣2️⃣ YouTube premium 1 mes a 7 mill \n\n1️⃣3️⃣ Vix pantalla por 30 días a 9 mil');
+      client.sendMessage(message.from, '🎥 *Escoje el número de tu preferencia*\n\n1️⃣ Netflix±Disney±Amazon prime video 22,000 por 30 días\n\n2️⃣ Netflix más Disney más hbo por 23,000 \n\n3️⃣ Netflix más hbo + Amazon 22,000 por 30 días \n\n4️⃣ Netflix original sin caídas y renovables a 17 mil \n\n5️⃣ Disney+ 7 mil \n\n6️⃣ Amazon 6 mil \n\n7️⃣ HBO Max 5 mil \n\n8️⃣ Star+ 7 mil \n\n9️⃣ PARAMOUNT+ 5 MIL \n\n🔟 VIX 9 MIL \n\n1️⃣1️⃣ Spotify 2 meses 14 mil \n\n1️⃣2️⃣ YouTube premium 1 mes a 7 mill \n\n1️⃣3️⃣ Vix pantalla por 30 días a 9 mil');
       registro[message.from].etapa = 30;
     
     } else if (message.body.toLowerCase().includes('2') || message.body.toLowerCase().includes('2') ) {
