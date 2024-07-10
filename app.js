@@ -82,6 +82,15 @@ let etapa = 0;
 let registro = {
 
   '120363299706890441@g.us': { etapa: 0, numeroDocumento: '' },
+  '573227151929@c.us': { etapa: 100, numeroDocumento: '' },
+  '573170236840@c.us': { etapa: 100, numeroDocumento: '' },
+  '573234714014@c.us': { etapa: 100, numeroDocumento: '' },
+  '573152749108@c.us': { etapa: 100, numeroDocumento: '' },
+  '573166639178@c.us': { etapa: 100, numeroDocumento: '' },
+  '573228582339@c.us': { etapa: 100, numeroDocumento: '' },
+
+
+
 };
  // Registra los numeros telefono que inician al programa 
 
