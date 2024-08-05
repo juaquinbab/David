@@ -91,6 +91,8 @@ let registro = {
   '573153377196@c.us': { etapa: 100, numeroDocumento: '' },
   '573009734435@c.us': { etapa: 100, numeroDocumento: '' },
   '573209959780@c.us': { etapa: 100, numeroDocumento: '' },
+  '573245561448@c.us': { etapa: 100, numeroDocumento: '' },
+ 
  
 
 
