@@ -1,3 +1,2 @@
-2024/07/10-11:08:46.850 9e03 Reusing MANIFEST /Users/leidyburgos/Documents/David/.wwebjs_auth/session-Client-one/Default/Session Storage/MANIFEST-000001
-2024/07/10-11:08:46.850 9e03 Recovering log #3
-2024/07/10-11:08:46.852 9e03 Reusing old log /Users/leidyburgos/Documents/David/.wwebjs_auth/session-Client-one/Default/Session Storage/000003.log 
+2024/08/17-15:38:17.236 f703 Creating DB /Users/leidyburgos/Documents/David/.wwebjs_auth/session-Client-one/Default/Session Storage since it was missing.
+2024/08/17-15:38:17.249 f703 Reusing MANIFEST /Users/leidyburgos/Documents/David/.wwebjs_auth/session-Client-one/Default/Session Storage/MANIFEST-000001

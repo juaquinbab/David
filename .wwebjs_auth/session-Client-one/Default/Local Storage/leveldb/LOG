@@ -1,3 +1,2 @@
-2024/07/10-11:08:45.722 9e03 Reusing MANIFEST /Users/leidyburgos/Documents/David/.wwebjs_auth/session-Client-one/Default/Local Storage/leveldb/MANIFEST-000001
-2024/07/10-11:08:45.722 9e03 Recovering log #3
-2024/07/10-11:08:45.723 9e03 Reusing old log /Users/leidyburgos/Documents/David/.wwebjs_auth/session-Client-one/Default/Local Storage/leveldb/000003.log 
+2024/08/17-15:38:16.207 8c03 Creating DB /Users/leidyburgos/Documents/David/.wwebjs_auth/session-Client-one/Default/Local Storage/leveldb since it was missing.
+2024/08/17-15:38:16.224 8c03 Reusing MANIFEST /Users/leidyburgos/Documents/David/.wwebjs_auth/session-Client-one/Default/Local Storage/leveldb/MANIFEST-000001
