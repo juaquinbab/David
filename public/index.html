@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recibir Datos desde la Web</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+ 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script> 
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script src="ajax2.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary bg-opacity-25">
+    <div class="container-fluid">
+      <a class="navbar-brand">
+        <img src="/media/logo.png" alt="Bootstrap" width="30" height="24">
+      </a>
+      <a href="http://localhost:9000/home.html">
+        <button >Plataforma</button>
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="http://localhost:9000/">
+              <button>Mensajes masivos</button>
+            </a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/public/pedidos.html">
+            <button>Pedidos</button>
+          </a>
+          </li> -->
+          <li class="nav-item dropdown">
+            <a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <button class="dropdown-toggle">Asistente</button>
+            </a>
+
+
+            <ul class="dropdown-menu">
+
+              <li>
+                <button class="dropdown-item" onclick="window.open('https://wa.link/ljxoq3', '_blank')">
+                    Soporte
+                </button>
+            </li>
+              
+
+        <li>
+          <button class="dropdown-item" onclick="window.open('https://www.creativocode.com', '_blank')">
+              Acerca de nosotros
+          </button>
+      </li>
+  
+            </ul>
+
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </nav>
+
+  <section class="contact-form rounded-5 bg-body-tertiary bg-opacity-50" style="padding: 20px;">
+    <div class="contact-image text-center">
+      <img class="rounded-circle" src="https://i.ibb.co/mbh7SSF/logo2.png" alt="logo restaurante" />
+    </div>
+
+ 
+      <h3 class="text-center">Creativo Code</h3>
+      <div class="text-center"  style="margin-top: -2%; margin-bottom: -7%;">
+
+        <div class="row">
+
+          <div class="col-md-4">
+
+            <button type="button" class="upload-button btn btn-primary" id="show-upload-form" data-bs-toggle="modal"
+              data-bs-target="#uploadModal">
+              Cargar Imagen
+            </button>
+          </div>
+
+          <div class="col-md-4">
+            <button class="btn btn-success" role="button" data-bs-toggle="button" id="toggleButton"
+              onclick="toggleMSGenvio()">
+              Enviar IMG
+            </button>
+          </div>
+
+          <div class="col-md-4">
+            <button type="button" class="btn btn-danger" id="borrar-registros-servidor">
+              Borrar registros
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="uploadModalLabel">
+                Carga de Imagen
+              </h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+              <form action="/upload" method="post" enctype="multipart/form-data" class="upload-form">
+                <label for="image">Selecciona una imagen:</label>
+                <input type="file" name="image" />
+                <input type="submit" class="btn btn-primary" data-bs-dismiss="modal" value="cargar">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="success-message" class="alert alert-success" style="display: none;">
+        Imagen cargada con éxito
+        <button type="button" class="btn-close" onclick="closeSuccessMessage()" aria-label="Close"></button>
+      </div>
+
+      <!--Formulario mensajes y numeros-->
+      <form action="/procesar" method="post">
+      <div class="row g-4 align-items-center">
+        <div class="col-md-6">
+          <div class="form-floating mb-2" >
+            <input type="text" class="form-control"  id="numbers" value="" style="height: 100px" />
+            <label for="floatingInputGrid">Números de telefono separados por coma</label>
+            <!--<label for="numbers">Números de Teléfono:</label>
+            <input type="text" name="numbers" id="numbers" placeholder="Ingrese los números de teléfono separados por comas">
+            -->
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-floating mb-2">
+          <textarea name="messages"  id="messages" class="form-control" style=" height: 100px"></textarea>
+          <label for="floatingInputGrid">Mensajes separados por comas</label>
+            <!--<label for="messages">Mensajes:</label>
+            <input type="text" name="messages" id="messages" placeholder="Ingrese los mensajes separados por comas">
+          -->
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-md text-center">
+            <div class="form-group">
+              <input type="submit" name="btnSubmit" class="btnContact btn btn-danger " id="submitButton"
+                value="Enviar mensaje" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="mensaje-enviado"></div>
+      <div id="registros-container"></div>
+    </form>
+  </section>
+
+  <!-- este codigo carga la imagen al servidor con el boton-->
+
+  <script>
+
+    document.getElementById('show-upload-form').addEventListener('click', function () {
+      var uploadForm = document.querySelector('.upload-form');
+      if (uploadForm.style.display === 'none' || uploadForm.style.display === '') {
+        uploadForm.style.display = 'block';
+
+        document.getElementById('image').value='';
+      } else {
+        uploadForm.style.display = 'none';
+      }
+    });
+
+
+
+    // ////
+
+  function closeSuccessMessage() {
+    const successMessage = document.getElementById('success-message');
+    successMessage.style.display = 'none';
+  }
+
+  $(document).ready(function () {
+    $(".upload-form").submit(function (e) {
+      e.preventDefault();
+
+      $.ajax({
+        type: "POST",
+        url: "/upload",
+        data: new FormData(this),
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          // Mostrar el mensaje de éxito dentro del modal
+          $("#success-message").html(response).show();
+          
+          // Opcional: Puedes cerrar el modal después de un tiempo
+          setTimeout(function () {
+            $("#uploadModal").modal('hide');
+          }, 3000); // Cerrar el modal después de 3 segundos (3000 milisegundos)
+        }
+      });
+    });
+  });
+
+
+    
+    /*document.getElementById('submitImg').addEventListener('click', function () {
+      var uploadForm = document.querySelector('.upload-form');
+      var formData = new FormData(uploadForm);
+
+      fetch('/upload', {
+        method: 'POST',
+        body: formData,
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          var modal = new bootstrap.Modal(document.getElementById('uploadModal'));
+          modal.hide();
+        } 
+      })
+      .catch(error => {
+        console.error('Error al cargar la imagen:', error);
+      });
+    });
+*/
+
+    // 
+
+    function toggleMSGenvio() {
+      fetch('/cambiar', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+          const toggleButton = document.getElementById('toggleButton');
+          toggleButton.style.backgroundColor = data.MSGenvio ? 'green' : 'red';
+          // Guarda el estado en localStorage
+          localStorage.setItem('MSGenvio', data.MSGenvio);
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    // Recuperar el estado de MSGenvio al cargar la página
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggleButton = document.getElementById('toggleButton');
+      const storedMSGenvio = localStorage.getItem('MSGenvio');
+      if (storedMSGenvio) {
+        toggleButton.style.backgroundColor = storedMSGenvio === 'true' ? 'green' : 'red';
+      }
+    });
+
+    // ////
+
+
+    // Obtener el formulario
+    //const form = document.querySelector('form');
+    //const mensajeEnviado = document.getElementById('mensaje-enviado');
+    document.addEventListener('DOMContentLoaded', function () {
+      // const form = document.querySelector('form');
+      const mensajeEnviado = document.getElementById('mensaje-enviado');
+      // Al enviar el formulario
+      //form.addEventListener('submit', (event) => {
+      document.getElementById('submitButton').addEventListener('click', function () {
+        event.preventDefault(); // Evitar que se envíe el formulario de inmediato
+
+
+
+
+        const numbersValue = document.getElementById('numbers').value;
+        const messagesValue = document.getElementById('messages').value;
+
+        // Convertir los valores en arrays separados por comas sin agregar comillas
+        const numbersArray = numbersValue.split(',').map(number => number.trim());
+        const messagesArray = messagesValue.split(',').map(message => message.trim());
+
+        // Enviar los datos al servidor
+        fetch('/procesar', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ numbers: numbersArray, messages: messagesArray })
+        })
+
+        .then(response => {
+            if (response.ok) {
+              mensajeEnviado.textContent = 'Mensaje enviado correctamente';
+              mensajeEnviado.style.color = 'green';
+              console.log('Datos enviados correctamente');
+                      // Vaciar los campos de entrada después de un envío exitoso
+              document.getElementById('numbers').value = '';
+              document.getElementById('messages').value = '';
+              mostrarRegistros();
+            } else {
+              mensajeEnviado.textContent = 'Error al enviar el mensaje';
+              mensajeEnviado.style.color = 'red';
+              console.error('Error al enviar los datos');
+            }
+          })
+
+          .catch(error => {
+            mensajeEnviado.textContent = 'Error al enviar el mensaje';
+            mensajeEnviado.style.color = 'red';
+            console.error('Error:', error);
+          });
+      });
+    });
+    // Función para mostrar los registros de mensajes
+    function mostrarRegistros() {
+      fetch('/registros')
+        .then(response => response.json())
+        .then(data => {
+          const registrosContainer = document.getElementById('registros-container');
+          registrosContainer.innerHTML = ''; // Limpiar el contenido anterior
+
+          data.forEach(registro => {
+            const mensajeElement = document.createElement('p');
+            mensajeElement.textContent = registro.mensaje;
+            registrosContainer.appendChild(mensajeElement);
+
+            const numeroElement = document.createElement('p');
+            numeroElement.textContent = registro.numero;
+            registrosContainer.appendChild(numeroElement);
+          });
+        })
+        .catch(error => {
+          console.log('Error al obtener los registros:', error);
+        });
+    }
+
+
+
+
+    // Obtén una referencia al botón por su ID
+    const btnBorrarRegistros = document.getElementById('borrar-registros-servidor');
+
+    // Agrega un manejador de eventos para el clic en el botón
+    btnBorrarRegistros.addEventListener('click', () => {
+      // Cambia el color del botón a rojo
+      btnBorrarRegistros.style.backgroundColor = 'red';
+
+      // Realiza la solicitud DELETE al servidor
+      fetch('/borrar-registros', {
+        method: 'DELETE',
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Maneja la respuesta del servidor
+          console.log(data.message); // Muestra el mensaje en la consola
+        })
+        .catch((error) => {
+          console.error('Error al borrar registros:', error);
+        });
+
+      // Después de 2 segundos, regresa el color del botón a verde
+      setTimeout(() => {
+        btnBorrarRegistros.style.backgroundColor = 'green';
+      }, 2000);
+    });
+
+
+
+
+
+
+
+    setInterval(mostrarRegistros, 5000);
+
+
+
+    // Llamar a la función para mostrar los registros al cargar la página
+    mostrarRegistros();
+  </script>
+</body>
+
+</html>
